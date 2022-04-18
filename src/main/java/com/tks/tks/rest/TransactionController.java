@@ -4,6 +4,7 @@ import com.tks.tks.model.Nm.BlockNm;
 import com.tks.tks.model.Nm.TransactionNm;
 import com.tks.tks.service.BlockService;
 import com.tks.tks.service.TransactionService;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,8 @@ public class TransactionController {
     }
 
     @GetMapping("/api/transaction/getByTimeRange")
-    public ResponseEntity<List<TransactionNm>> getByTimeRange(@RequestParam String from, @RequestParam String to) {
+    public ResponseEntity<List<TransactionNm>> getByTimeRange(@ApiParam(example = "2022-04-01 19:21:36") @RequestParam String from,
+                                                              @ApiParam(example = "2022-04-01 19:21:36") @RequestParam String to) {
         return new ResponseEntity<>(transactionService.getTransactionByTimestamp(from, to), HttpStatus.OK);
     }
 

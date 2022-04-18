@@ -3,6 +3,7 @@ package com.tks.tks.rest;
 import com.tks.tks.model.Nm.BlockNm;
 import com.tks.tks.repo.BlockRepo;
 import com.tks.tks.service.BlockService;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,8 @@ public class BlockController {
     }
 
     @GetMapping("/api/block/getByTimeRange")
-    public ResponseEntity<List<BlockNm>> getByTimeRange(@RequestParam String from, @RequestParam String to) {
+    public ResponseEntity<List<BlockNm>> getByTimeRange(@ApiParam(example = "2022-04-01 19:21:36") @RequestParam String from,
+                                                        @ApiParam(example = "2022-04-01 19:21:36") @RequestParam String to) {
         return new ResponseEntity<>(blockService.getBlockByTimerange(from, to), HttpStatus.OK);
     }
 }

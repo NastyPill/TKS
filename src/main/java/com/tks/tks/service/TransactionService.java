@@ -44,7 +44,6 @@ public class TransactionService {
 
     public List<TransactionNm> getByBlockNumber(Long number) {
         List<TransactionDm> transactionDm = transactionRepo.findByBlockNumber(number);
-        checkSize(transactionDm);
         return transactionDm.stream().map(TransactionNm::toNm).collect(Collectors.toList());
     }
 
